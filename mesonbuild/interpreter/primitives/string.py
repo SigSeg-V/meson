@@ -7,7 +7,7 @@ import os
 
 import typing as T
 
-from ...mesonlib import version_compare, version_compare_many, underscorify
+from ...mesonlib import version_compare_many, underscorify
 from ...interpreterbase import (
     InterpreterObject,
     MesonOperator,
@@ -196,12 +196,7 @@ class MesonVersionString(str):
     pass
 
 class MesonVersionStringHolder(StringHolder):
-    @noKwargs
-    @typed_pos_args('str.version_compare', str)
-    @InterpreterObject.method('version_compare')
-    def version_compare_method(self, args: T.Tuple[str], kwargs: TYPE_kwargs) -> bool:
-        self.interpreter.tmp_meson_version = args[0]
-        return version_compare(self.held_object, args[0])
+    pass
 
 # These special subclasses of string exist to cover the case where a dependency
 # exports a string variable interchangeable with a system dependency. This

@@ -67,6 +67,10 @@ assert(''.join(['a', 'b', 'c']) == 'abc', 'empty join() broken')
 assert(' '.join(['a']) == 'a', 'single join broken')
 assert(' '.join(['a'], ['b', ['c']], 'd') == 'a b c d', 'varargs join broken')
 
+# meson.version() has it's own cmp method
+assert(meson.version().version_compare('>1.1.0'), 'meson version compare 1 arg broken')
+assert(meson.version().version_compare('>1.1.0', '<10.0.0'), 'meson version compare 2 args broken')
+
 version_number = '1.2.8'
 
 assert(version_number.version_compare('>=1.2.8'), 'Version_compare gt broken')
